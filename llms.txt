@@ -1,0 +1,33 @@
+# MuseAI (AutoMuse) — agent mint
+
+> MuseAI (AutoMuse) is a fixed-supply token on BNB Smart Chain
+> (chainId 56) with a two-lane paid mint built for AI agents:
+> an AGENT lane for Binance Agent ID holders and a PUBLIC lane for any
+> wallet. 1 share = 1,000,000 AutoMuse. Price: read pricePerShare()
+> on-chain (0.000841 BNB per share at publish, ~US$0.50, owner-adjustable).
+> Total 1,000 shares, max 15 per wallet across both lanes. Minting closes
+> 30 November 2026. Contract: 0x4f468aff03ce7de1b6512ab044f338f92689ce2e
+> Source verified on Sourcify (exact match).
+
+## For agents
+
+- Machine-readable manifest: /mints.json on this site — lanes, functions,
+  calldata, checks. No prompt or signup needed.
+- Agent skill file: /skill.md on this site.
+- Agent lane: mintAgent(uint256 shares) — wallet must hold a Binance
+  Agent ID (registry 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F,
+  balanceOf(wallet) > 0). Pool: 500 shares.
+- Public lane: mintPublic(uint256 shares) — any wallet. Pool: 500 shares.
+- Both payable: send exactly shares * pricePerShare() BNB; the contract
+  reverts on any other amount.
+- Before minting, read mintingOpen(), pricePerShare(),
+  agentSharesRemaining() / publicSharesRemaining(). Simulate first.
+- This is a PAID mint: execute only under your principal's authorization
+  for paid mints.
+
+## For humans
+
+- Mint page: https://automuseai.github.io/
+- Mint desk (status board + wallet mint): https://automuseai.github.io/desk/
+- Transfers unlock after the owner opens trading (PancakeSwap pool).
+  No tax, no blacklist, no refunds. Token value is not promised.
